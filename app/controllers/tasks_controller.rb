@@ -37,6 +37,7 @@ class TasksController < ApplicationController
   end
 
   def destroy
+    @task = Task.find(params[:id])
     @task.destroy
 
     flash[:success] = 'Task は正常に削除されました'
@@ -51,7 +52,7 @@ class TasksController < ApplicationController
   end
 
   # Strong Parameter
-  #ただのメソッド...≠アクション
+
   def task_params
     params.require(:task).permit(:content, :status)
   end
